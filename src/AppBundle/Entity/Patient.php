@@ -3,11 +3,14 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Patient
  *
- * @ORM\Table(name="patient")
+ * @ORM\Table(name="Patient")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PatientRepository")
  */
 class Patient
@@ -25,6 +28,7 @@ class Patient
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $firstName;
 
@@ -32,41 +36,42 @@ class Patient
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=50)
+     * @Assert\NotBlank()
      */
     private $lastName;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="birthday", type="datetime")
+     * @ORM\Column(name="birthday", type="date")
      */
     private $birthday;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="phone", type="integer")
+     * @ORM\Column(name="phone", type="integer", nullable=true, nullable=false)
      */
     private $phone;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="phone_mobile", type="integer")
+     * @ORM\Column(name="phone_mobile", type="integer", nullable=false)
      */
     private $phoneMobile;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="note", type="text")
+     * @ORM\Column(name="note", type="text", nullable=true)
      */
     private $note;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=50)
+     * @ORM\Column(name="email", type="string", length=50, nullable=false, unique=true)
      */
     private $email;
 
@@ -84,11 +89,26 @@ class Patient
      */
     private $updatedAt;
 
+    /**
+     * @ManyToOne(targetEntity="Address", cascade={"persist"})
+     * @JoinColumn(name="address_id", referencedColumnName="id")
+     */
+    private $address;
+
+    /**
+     * Patient constructor.
+     */
+    public function __construct()
+    {
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -111,7 +131,7 @@ class Patient
     /**
      * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -119,9 +139,9 @@ class Patient
     }
 
     /**
-     * Set lasyName
+     * Set lastName
      *
-     * @param string $lasyName
+     * @param $lastName
      * @return Patient
      */
     public function setLastName($lastName)
@@ -132,11 +152,11 @@ class Patient
     }
 
     /**
-     * Get lasyName
+     * Get lastName
      *
-     * @return string 
+     * @return string
      */
-    public function getLasyName()
+    public function getLastName()
     {
         return $this->lastName;
     }
@@ -157,7 +177,7 @@ class Patient
     /**
      * Get birthday
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthday()
     {
@@ -180,7 +200,7 @@ class Patient
     /**
      * Get phone
      *
-     * @return integer 
+     * @return integer
      */
     public function getPhone()
     {
@@ -203,7 +223,7 @@ class Patient
     /**
      * Get phoneMobile
      *
-     * @return integer 
+     * @return integer
      */
     public function getPhoneMobile()
     {
@@ -226,7 +246,7 @@ class Patient
     /**
      * Get note
      *
-     * @return string 
+     * @return string
      */
     public function getNote()
     {
@@ -249,7 +269,7 @@ class Patient
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -272,7 +292,7 @@ class Patient
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -295,10 +315,33 @@ class Patient
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set address
+     *
+     * @param Address $address
+     * @return Patient
+     */
+    public function setAddress(Address $address = null)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return Address
+     */
+    public function getAddress()
+    {
+        return $this->address;
     }
 }

@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Address
+ * Employee
  *
- * @ORM\Table(name="address")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\AddressRepository")
+ * @ORM\Table(name="employee")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EmployeeRepository")
  */
-class Address
+class Employee
 {
     /**
      * @var int
@@ -24,30 +24,30 @@ class Address
     /**
      * @var string
      *
-     * @ORM\Column(name="address_1", type="string", length=70)
+     * @ORM\Column(name="lastname", type="string", length=100)
      */
-    private $address1;
+    private $lastname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="address_2", type="string", length=70)
+     * @ORM\Column(name="firstname", type="string", length=100)
      */
-    private $address2;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="postcode", type="integer")
-     */
-    private $postcode;
+    private $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="city", type="string", length=50)
+     * @ORM\Column(name="email", type="string", length=100, unique=true)
      */
-    private $city;
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="passwd", type="string", length=255)
+     */
+    private $passwd;
 
     /**
      * @var \DateTime
@@ -63,15 +63,6 @@ class Address
      */
     private $updatedAt;
 
-    /**
-     * Address constructor.
-     */
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
-    }
-
 
     /**
      * Get id
@@ -84,102 +75,102 @@ class Address
     }
 
     /**
-     * Set address1
+     * Set lastname
      *
-     * @param string $address1
-     * @return Address
+     * @param string $lastname
+     * @return Employee
      */
-    public function setAddress1($address1)
+    public function setLastname($lastname)
     {
-        $this->address1 = $address1;
+        $this->lastname = $lastname;
 
         return $this;
     }
 
     /**
-     * Get address1
+     * Get lastname
      *
      * @return string 
      */
-    public function getAddress1()
+    public function getLastname()
     {
-        return $this->address1;
+        return $this->lastname;
     }
 
     /**
-     * Set address2
+     * Set firstname
      *
-     * @param string $address2
-     * @return Address
+     * @param string $firstname
+     * @return Employee
      */
-    public function setAddress2($address2)
+    public function setFirstname($firstname)
     {
-        $this->address2 = $address2;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
     /**
-     * Get address2
+     * Get firstname
      *
      * @return string 
      */
-    public function getAddress2()
+    public function getFirstname()
     {
-        return $this->address2;
+        return $this->firstname;
     }
 
     /**
-     * Set postcode
+     * Set email
      *
-     * @param integer $postcode
-     * @return Address
+     * @param string $email
+     * @return Employee
      */
-    public function setPostcode($postcode)
+    public function setEmail($email)
     {
-        $this->postcode = $postcode;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * Get postcode
-     *
-     * @return integer 
-     */
-    public function getPostcode()
-    {
-        return $this->postcode;
-    }
-
-    /**
-     * Set city
-     *
-     * @param string $city
-     * @return Address
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get city
+     * Get email
      *
      * @return string 
      */
-    public function getCity()
+    public function getEmail()
     {
-        return $this->city;
+        return $this->email;
+    }
+
+    /**
+     * Set passwd
+     *
+     * @param string $passwd
+     * @return Employee
+     */
+    public function setPasswd($passwd)
+    {
+        $this->passwd = $passwd;
+
+        return $this;
+    }
+
+    /**
+     * Get passwd
+     *
+     * @return string 
+     */
+    public function getPasswd()
+    {
+        return $this->passwd;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Address
+     * @return Employee
      */
     public function setCreatedAt($createdAt)
     {
@@ -202,7 +193,7 @@ class Address
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return Address
+     * @return Employee
      */
     public function setUpdatedAt($updatedAt)
     {
