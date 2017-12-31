@@ -1,13 +1,49 @@
 <!DOCTYPE html>
+<html lang="en">
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}{{ page_title }}{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="#">Hospital care center</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('employee_index') }}">Employees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('room_index') }}">Rooms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('patient_index') }}">Patients</a>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<div class="container-fluid">
+    {% block body %}
+    {% endblock %}
+</div>
+
+<script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

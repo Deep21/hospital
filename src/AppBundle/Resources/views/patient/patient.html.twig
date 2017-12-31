@@ -1,3 +1,38 @@
-{% for patient in patients %}
-    {{ patient.email }}
-{% endfor %}
+{% extends 'base.html.twig' %}
+
+{% set page_title = 'Patient list' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">E-Mail</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Birth day</th>
+                    <th scope="col">Mobile phone</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for patient in patients %}
+                    <tr>
+                        <th scope="row"> {{ patient.id }}</th>
+                        <td> {{ patient.email }}</td>
+                        <td> {{ patient.firstName }}</td>
+                        <td> {{ patient.lastName }}</td>
+                        <td> {{ patient.birthday.format('Y-m-d') }}</td>
+                        <td> {{ patient.phoneMobile }}</td>
+                        <td>
+                            <a class="btn btn-link" href="{{ path('edit_patient', {'patientDB': patient.id }) }}" role="Edit">edit</a>
+                            <a class="btn btn-link" href="{{ path('delete_patient', {'patient': patient.id }) }}" role="Edit">remove</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

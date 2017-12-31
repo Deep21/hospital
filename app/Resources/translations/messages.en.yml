@@ -1,0 +1,11 @@
+form.placeholder:
+    email: Add the e-mail address of the patient
+    firstname: Add the firstname of the patient
+    lastname: Add the last name of the patient
+    birthday: Select the birthday
+    phone: Add the phone number of the patient
+    phone_mobile: Add the mobile number of the patient
+form.message:
+    register:
+        success: The patient has been registered
+        fail: An error has occurred

@@ -6,12 +6,18 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Patient
  *
  * @ORM\Table(name="Patient")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PatientRepository")
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     errorPath="email",
+ *     message="patient.email.not_same"
+ * )
  */
 class Patient
 {
@@ -44,20 +50,21 @@ class Patient
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="date")
+     * @Assert\Date()
      */
     private $birthday;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="phone", type="integer", nullable=true, nullable=false)
+     * @ORM\Column(name="phone", type="string", nullable=true, nullable=true)
      */
     private $phone;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="phone_mobile", type="integer", nullable=false)
+     * @ORM\Column(name="phone_mobile", type="string", nullable=true)
      */
     private $phoneMobile;
 
@@ -72,6 +79,7 @@ class Patient
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=50, nullable=false, unique=true)
+     * @Assert\Email()
      */
     private $email;
 

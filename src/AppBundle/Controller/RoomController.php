@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/employee")
+ * @Route("/room")
  */
-class EmployeeController extends Controller
+class RoomController extends Controller
 {
     /**
-     * @Route("/", name="employee_index")
+     * @Route("/", name="room_index")
      * @Method(methods={"GET"})
      * @param Request $request
      * @return Response

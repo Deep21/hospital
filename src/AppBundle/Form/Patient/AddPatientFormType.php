@@ -4,6 +4,7 @@ namespace AppBundle\Form\Patient;
 
 use AppBundle\Form\Address\AddAddressFormType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -28,8 +29,8 @@ class AddPatientFormType extends AbstractType
             ->add('lastName', TextType::class)
             ->add('email', EmailType::class)
             ->add('birthday', DateTimeType::class)
-            ->add('phoneMobile', NumberType::class)
-            ->add('phone', NumberType::class)
+            ->add('phoneMobile', TextType::class)
+            ->add('phone', TextType::class)
             ->add('address', AddAddressFormType::class)
             ->add('phone', NumberType::class)
             ->add('save', SubmitType::class);
