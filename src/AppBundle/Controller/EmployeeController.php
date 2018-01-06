@@ -26,4 +26,16 @@ class EmployeeController extends Controller
         return $this->render('@App/patient/patient.html.twig', ['patients' => $patientsList]);
     }
 
+
+    /**
+     * @Route("/login", name="login")
+     * @Method(methods={"GET"})
+     * @param Request $request
+     * @return Response
+     */
+    public function loginAction(Request $request)
+    {
+
+    }
+
 }

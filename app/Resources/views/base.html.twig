@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+{#    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="#">Hospital care center</a>
         <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
                 data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
@@ -27,18 +27,17 @@
                     <a class="nav-link" href="{{ url('employee_index') }}">Employees</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('room_index') }}">Rooms</a>
+                    <a class="nav-link" href="{{ url('bed_index') }}">Rooms</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('patient_index') }}">Patients</a>
-
                 </li>
             </ul>
         </div>
-    </nav>
+    </nav>#}
 </header>
 
-<div class="container-fluid">
+<div class="container">
     {% block body %}
     {% endblock %}
 </div>

@@ -9,21 +9,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @Route("/room")
+ * @Route("/invoice")
  */
-class RoomController extends Controller
+class InvoiceController extends Controller
 {
     /**
-     * @Route("/", name="room_index")
+     * @Route("/", name="invoice_index")
      * @Method(methods={"GET"})
      * @param Request $request
      * @return Response
      */
     public function indexAction(Request $request)
     {
-        $patientsList = $this->getDoctrine()->getRepository('AppBundle:Patient')->findAll();
-
-        return $this->render('@App/patient/patient.html.twig', ['patients' => $patientsList]);
     }
 
 }

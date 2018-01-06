@@ -48,7 +48,9 @@ class PatientController extends Controller
                 $patient->setAddress($patient->getAddress());
                 $em->persist($patient);
                 $em->flush();
-                $this->get('session')->getFlashBag()->add('success', 'form.message.register.success');
+                $this->get('session')
+                    ->getFlashBag()
+                    ->add('success', 'form.message.register.success');
             } catch (Exception $e) {
 
             }
