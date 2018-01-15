@@ -21,6 +21,7 @@ class InvoiceController extends Controller
      */
     public function indexAction(Request $request)
     {
+        exit;
     }
 
 }
